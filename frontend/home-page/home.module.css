@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff8f0;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+header {
+    background-color: #ffe5d9;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: #ff6f61;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.hero {
+    background-color: #ffe0b5;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.features {
+    background-color: #fff;
+    padding: 3rem 1rem;
+}
+
+.feature-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature {
+    flex: 1;
+    min-width: 250px;
+    background: #fdf2ec;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.gallery {
+    background-color: #fff8f0;
+    padding: 3rem 1rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.local {
+    background-color: #ffd4bf;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.get-started {
+    background-color: #ffdab9;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+footer {
+    background-color: #ffe5d9;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #555;
+}

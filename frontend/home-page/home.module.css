@@ -10,31 +10,39 @@ body {
     width: 90%;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
 }
 
 header {
     background-color: #ffe5d9;
-    padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #ff6f61;
+    font-weight: 600;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 1rem;
-}
-
-nav a {
+nav .login-button {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
     text-decoration: none;
-    color: #333;
     font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+nav .login-button:hover {
+    background-color: #e65c50;
 }
 
 .hero {
@@ -48,6 +56,10 @@ nav a {
     margin-bottom: 1rem;
 }
 
+.hero p {
+    font-size: 1.1rem;
+}
+
 .cta-button {
     background-color: #ff6f61;
     color: white;
@@ -56,8 +68,13 @@ nav a {
     border-radius: 25px;
     font-size: 1rem;
     text-decoration: none;
-    display: inline-block;
     margin-top: 1rem;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e65c50;
 }
 
 .features {
@@ -65,11 +82,16 @@ nav a {
     padding: 3rem 1rem;
 }
 
+.features h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .feature-grid {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .feature {
@@ -79,6 +101,7 @@ nav a {
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    text-align: center;
 }
 
 .gallery {
@@ -86,28 +109,34 @@ nav a {
     padding: 3rem 1rem;
 }
 
+.gallery h3 {
+    text-align: center;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .gallery-grid img {
     width: 100%;
     border-radius: 12px;
+    object-fit: cover;
+}
+
+.local, .get-started {
+    text-align: center;
+    padding: 3rem 1rem;
 }
 
 .local {
     background-color: #ffd4bf;
-    text-align: center;
-    padding: 3rem 1rem;
 }
 
 .get-started {
     background-color: #ffdab9;
-    text-align: center;
-    padding: 3rem 1rem;
 }
 
 footer {

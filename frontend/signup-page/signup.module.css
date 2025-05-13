@@ -23,6 +23,7 @@ body {
     width: 100%;
     max-width: 450px;
     text-align: center;
+    margin-top: 200px;
 }
 
 .signup-card h2 {

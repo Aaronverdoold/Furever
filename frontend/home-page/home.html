@@ -45,6 +45,73 @@
     </div>
 </section>
 
+<section id="swipe" class="swipe-section">
+  <div class="container">
+    <h3>Swipe & Match</h3>
+    <div id="card-stack" class="card-stack">
+      <!-- Cards will be injected here -->
+    </div>
+    <div class="swipe-buttons">
+      <button id="dislike-btn">👎 Dislike</button>
+      <button id="like-btn">👍 Like</button>
+    </div>
+    <div id="match-message" class="match-message"></div>
+  </div>
+</section>
+<script>
+const petProfiles = [
+    { id: 1, name: "Buddy", image: "../../images/dog.jpg" },
+    { id: 2, name: "Mittens", image: "../../images/cat.jpg" },
+    { id: 3, name: "Luna", image: "../../images/dog-cat.jpg" }
+];
+
+// Simulate that Luna (id: 3) liked the current user's pet
+const simulatedLikesFromOthers = [3]; // mutual match if user likes 3
+
+let currentIndex = 0;
+
+function showCard() {
+    const cardStack = document.getElementById("card-stack");
+    cardStack.innerHTML = "";
+    const pet = petProfiles[currentIndex];
+    if (!pet) {
+        cardStack.innerHTML = "<p>No more pets to swipe!</p>";
+        return;
+    }
+
+    const card = document.createElement("div");
+    card.className = "pet-card";
+    card.innerHTML = `
+        <img src="${pet.image}" alt="${pet.name}" />
+        <h4>${pet.name}</h4>
+    `;
+    cardStack.appendChild(card);
+}
+
+function handleSwipe(action) {
+    const pet = petProfiles[currentIndex];
+    if (action === "like") {
+        if (simulatedLikesFromOthers.includes(pet.id)) {
+            document.getElementById("match-message").textContent = `🎉 It's a match with ${pet.name}!`;
+        } else {
+            document.getElementById("match-message").textContent = "";
+        }
+    } else {
+        document.getElementById("match-message").textContent = "";
+    }
+
+    currentIndex++;
+    showCard();
+}
+
+document.getElementById("like-btn").addEventListener("click", () => handleSwipe("like"));
+document.getElementById("dislike-btn").addEventListener("click", () => handleSwipe("dislike"));
+
+showCard();
+</script>
+
+
+
 <section id="gallery" class="gallery">
     <div class="container">
         <h3>Pet Gallery</h3>

@@ -31,7 +31,7 @@ header {
     font-weight: 600;
 }
 
-nav .login-button {
+nav .header-button {
     background-color: #ff6f61;
     color: #fff;
     padding: 0.5rem 1.25rem;
@@ -41,7 +41,7 @@ nav .login-button {
     transition: background 0.3s ease;
 }
 
-nav .login-button:hover {
+nav .header-button:hover {
     background-color: #e65c50;
 }
 

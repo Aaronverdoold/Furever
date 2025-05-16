@@ -65,14 +65,13 @@ const petProfiles = [
     { id: 3, name: "Luna", image: "../../images/dog-cat.jpg" }
 ];
 
-// Simulate that Luna (id: 3) liked the current user's pet
 const simulatedLikesFromOthers = [3]; // mutual match if user likes 3
-
 let currentIndex = 0;
 
 function showCard() {
     const cardStack = document.getElementById("card-stack");
     cardStack.innerHTML = "";
+
     const pet = petProfiles[currentIndex];
     if (!pet) {
         cardStack.innerHTML = "<p>No more pets to swipe!</p>";
@@ -85,30 +84,64 @@ function showCard() {
         <img src="${pet.image}" alt="${pet.name}" />
         <h4>${pet.name}</h4>
     `;
+
+    let startX;
+
+    card.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    card.addEventListener("touchend", (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diffX = endX - startX;
+
+        if (Math.abs(diffX) > 50) {
+            handleSwipe(diffX > 0 ? "like" : "dislike");
+        }
+    });
+
+    // Optional: mouse swipe support
+    card.addEventListener("mousedown", (e) => {
+        startX = e.clientX;
+    });
+
+    card.addEventListener("mouseup", (e) => {
+        const endX = e.clientX;
+        const diffX = endX - startX;
+
+        if (Math.abs(diffX) > 50) {
+            handleSwipe(diffX > 0 ? "like" : "dislike");
+        }
+    });
+
     cardStack.appendChild(card);
 }
 
 function handleSwipe(action) {
     const pet = petProfiles[currentIndex];
+    const matchMessage = document.getElementById("match-message");
+
     if (action === "like") {
         if (simulatedLikesFromOthers.includes(pet.id)) {
-            document.getElementById("match-message").textContent = `🎉 It's a match with ${pet.name}!`;
+            matchMessage.textContent = `🎉 It's a match with ${pet.name}!`;
         } else {
-            document.getElementById("match-message").textContent = "";
+            matchMessage.textContent = "";
         }
     } else {
-        document.getElementById("match-message").textContent = "";
+        matchMessage.textContent = "";
     }
 
     currentIndex++;
     showCard();
 }
 
+// Optional: keep buttons for accessibility
 document.getElementById("like-btn").addEventListener("click", () => handleSwipe("like"));
 document.getElementById("dislike-btn").addEventListener("click", () => handleSwipe("dislike"));
 
 showCard();
 </script>
+
 
 
 

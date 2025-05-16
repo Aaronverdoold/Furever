@@ -1,56 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pawfect Match - Where Pets Connect</title>
-    <link rel="stylesheet" href="home.module.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawfect Match - Where Pets Connect</title>
+  <link rel="stylesheet" href="home.module.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Add this if not in home.module.css */
+    .drag-gallery {
+      overflow-x: scroll;
+      display: flex;
+      gap: 1rem;
+      cursor: grab;
+      scroll-behavior: smooth;
+      padding: 1rem 0;
+    }
+    .drag-gallery .slider {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 200px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border-radius: 10px;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
+
 <header>
-    <div class="container header-container">
-        <h1 class="logo">Pawfect Match</h1>
-        <nav>
-            <a href="../login-page/login.html" class="header-button">Login</a>
-        </nav>
-    </div>
+  <div class="container header-container">
+    <h1 class="logo">Pawfect Match</h1>
+    <nav>
+      <a href="../login-page/login.html" class="header-button">Login</a>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-    <div class="container">
-        <h2>Find a furry friend your pet will love!</h2>
-        <p>Connect cats, dogs, and all creatures for friendship and fun.</p>
-        <a href="#get-started" class="cta-button">Start Matching Now</a>
-    </div>
+  <div class="container">
+    <h2>Find a furry friend your pet will love!</h2>
+    <p>Connect cats, dogs, and all creatures for friendship and fun.</p>
+    <a href="#get-started" class="cta-button">Start Matching Now</a>
+  </div>
 </section>
 
 <section id="features" class="features">
-    <div class="container">
-        <h3>What We Offer</h3>
-        <div class="feature-grid">
-            <div class="feature">
-                <h4>Pet Profiles</h4>
-                <p>Complete profiles with photos, traits, and more.</p>
-            </div>
-            <div class="feature">
-                <h4>Match & Message</h4>
-                <p>Swipe-style matches and owner chat for playdates.</p>
-            </div>
-            <div class="feature">
-                <h4>Local Sniff Zones</h4>
-                <p>Explore pet-friendly spots near you.</p>
-            </div>
-        </div>
+  <div class="container">
+    <h3>What We Offer</h3>
+    <div class="feature-grid">
+      <div class="feature">
+        <h4>Pet Profiles</h4>
+        <p>Complete profiles with photos, traits, and more.</p>
+      </div>
+      <div class="feature">
+        <h4>Match & Message</h4>
+        <p>Swipe-style matches and owner chat for playdates.</p>
+      </div>
+      <div class="feature">
+        <h4>Local Sniff Zones</h4>
+        <p>Explore pet-friendly spots near you.</p>
+      </div>
     </div>
+  </div>
 </section>
 
 <section id="swipe" class="swipe-section">
   <div class="container">
     <h3>Swipe & Match</h3>
-    <div id="card-stack" class="card-stack">
-      <!-- Cards will be injected here -->
-    </div>
+    <div id="card-stack" class="card-stack"></div>
     <div class="swipe-buttons">
       <button id="dislike-btn">👎 Dislike</button>
       <button id="like-btn">👍 Like</button>
@@ -58,122 +80,158 @@
     <div id="match-message" class="match-message"></div>
   </div>
 </section>
+
+<!-- ✅ Drag Slider Section -->
+<section id="trending" class="drag-slider">
+  <div class="container">
+    <h3>Trending Pets</h3>
+    <div class="wrapper drag-gallery">
+      <div class="slider">1</div>
+      <div class="slider">2</div>
+      <div class="slider">3</div>
+      <div class="slider">4</div>
+      <div class="slider">5</div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="gallery">
+  <div class="container">
+    <h3>Pet Gallery</h3>
+    <div class="gallery-grid">
+      <img src="../../images/dog.jpg" alt="Happy dog" />
+      <img src="../../images/cat.jpg" alt="Playful cat" />
+      <img src="../../images/dog-cat.jpg" alt="Chirping parrot" />
+    </div>
+  </div>
+</section>
+
+<section id="local" class="local">
+  <div class="container">
+    <h3>Find Local Playdate Spots</h3>
+    <p>Discover parks, pet cafés, and more to make the meeting purr-fect.</p>
+  </div>
+</section>
+
+<section id="get-started" class="get-started">
+  <div class="container">
+    <h3>Ready to Get Started?</h3>
+    <a href="#" class="cta-button">Create a Pet Profile</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Pawfect Match. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ✅ Scripts -->
 <script>
-const petProfiles = [
+  const petProfiles = [
     { id: 1, name: "Buddy", image: "../../images/dog.jpg" },
     { id: 2, name: "Mittens", image: "../../images/cat.jpg" },
     { id: 3, name: "Luna", image: "../../images/dog-cat.jpg" }
-];
+  ];
 
-const simulatedLikesFromOthers = [3]; // mutual match if user likes 3
-let currentIndex = 0;
+  const simulatedLikesFromOthers = [3]; // mutual match if user likes 3
+  let currentIndex = 0;
 
-function showCard() {
+  function showCard() {
     const cardStack = document.getElementById("card-stack");
     cardStack.innerHTML = "";
 
     const pet = petProfiles[currentIndex];
     if (!pet) {
-        cardStack.innerHTML = "<p>No more pets to swipe!</p>";
-        return;
+      cardStack.innerHTML = "<p>No more pets to swipe!</p>";
+      return;
     }
 
     const card = document.createElement("div");
     card.className = "pet-card";
     card.innerHTML = `
-        <img src="${pet.image}" alt="${pet.name}" />
-        <h4>${pet.name}</h4>
+      <img src="${pet.image}" alt="${pet.name}" />
+      <h4>${pet.name}</h4>
     `;
 
     let startX;
 
     card.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
+      startX = e.touches[0].clientX;
     });
 
     card.addEventListener("touchend", (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const diffX = endX - startX;
-
-        if (Math.abs(diffX) > 50) {
-            handleSwipe(diffX > 0 ? "like" : "dislike");
-        }
+      const endX = e.changedTouches[0].clientX;
+      const diffX = endX - startX;
+      if (Math.abs(diffX) > 50) {
+        handleSwipe(diffX > 0 ? "like" : "dislike");
+      }
     });
 
-    // Optional: mouse swipe support
     card.addEventListener("mousedown", (e) => {
-        startX = e.clientX;
+      startX = e.clientX;
     });
 
     card.addEventListener("mouseup", (e) => {
-        const endX = e.clientX;
-        const diffX = endX - startX;
-
-        if (Math.abs(diffX) > 50) {
-            handleSwipe(diffX > 0 ? "like" : "dislike");
-        }
+      const endX = e.clientX;
+      const diffX = endX - startX;
+      if (Math.abs(diffX) > 50) {
+        handleSwipe(diffX > 0 ? "like" : "dislike");
+      }
     });
 
     cardStack.appendChild(card);
-}
+  }
 
-function handleSwipe(action) {
+  function handleSwipe(action) {
     const pet = petProfiles[currentIndex];
     const matchMessage = document.getElementById("match-message");
 
     if (action === "like") {
-        if (simulatedLikesFromOthers.includes(pet.id)) {
-            matchMessage.textContent = `🎉 It's a match with ${pet.name}!`;
-        } else {
-            matchMessage.textContent = "";
-        }
-    } else {
+      if (simulatedLikesFromOthers.includes(pet.id)) {
+        matchMessage.textContent = `🎉 It's a match with ${pet.name}!`;
+      } else {
         matchMessage.textContent = "";
+      }
+    } else {
+      matchMessage.textContent = "";
     }
 
     currentIndex++;
     showCard();
-}
+  }
 
-// Optional: keep buttons for accessibility
-document.getElementById("like-btn").addEventListener("click", () => handleSwipe("like"));
-document.getElementById("dislike-btn").addEventListener("click", () => handleSwipe("dislike"));
+  document.getElementById("like-btn").addEventListener("click", () => handleSwipe("like"));
+  document.getElementById("dislike-btn").addEventListener("click", () => handleSwipe("dislike"));
 
-showCard();
+  showCard();
+
+  // ✅ Drag-to-scroll logic
+  const wrapper = document.querySelector('.wrapper');
+  let pressed = false;
+  let startX = 0;
+
+  wrapper.addEventListener('mousedown', function (e) {
+    pressed = true;
+    startX = e.clientX;
+    this.style.cursor = 'grabbing';
+  });
+
+  wrapper.addEventListener('mouseleave', function () {
+    pressed = false;
+  });
+
+  window.addEventListener('mouseup', function () {
+    pressed = false;
+    wrapper.style.cursor = 'grab';
+  });
+
+  wrapper.addEventListener('mousemove', function (e) {
+    if (!pressed) return;
+    this.scrollLeft += startX - e.clientX;
+  });
 </script>
 
-
-
-
-<section id="gallery" class="gallery">
-    <div class="container">
-        <h3>Pet Gallery</h3>
-        <div class="gallery-grid">
-            <img src="../../images/dog.jpg" alt="Happy dog" />
-            <img src="../../images/cat.jpg" alt="Playful cat" />
-            <img src="../../images/dog-cat.jpg" alt="Chirping parrot" />
-        </div>
-    </div>
-</section>
-
-<section id="local" class="local">
-    <div class="container">
-        <h3>Find Local Playdate Spots</h3>
-        <p>Discover parks, pet cafés, and more to make the meeting purr-fect.</p>
-    </div>
-</section>
-
-<section id="get-started" class="get-started">
-    <div class="container">
-        <h3>Ready to Get Started?</h3>
-        <a href="#" class="cta-button">Create a Pet Profile</a>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2025 Pawfect Match. All rights reserved.</p>
-    </div>
-</footer>
 </body>
 </html>
+

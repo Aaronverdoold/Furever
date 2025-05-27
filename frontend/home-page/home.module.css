@@ -39,11 +39,32 @@ nav .header-button {
     text-decoration: none;
     font-weight: 500;
     transition: background 0.3s ease;
+    border: none;
 }
 
 nav .header-button:hover {
     background-color: #e65c50;
 }
+
+.user-profile {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.user-profile a {
+    color: #ff6f61;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.user-profile a:hover {
+    color: #e65c50;
+}
+
 
 .hero {
     background-color: #ffe0b5;
@@ -184,3 +205,11 @@ footer {
   font-family: 'Poppins', sans-serif;
 }
 
+#user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: #444;
+}

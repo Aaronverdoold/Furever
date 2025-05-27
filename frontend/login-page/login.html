@@ -10,21 +10,34 @@
 <body>
 <div class="login-wrapper">
   <div class="login-card">
-    <h2>Welcome Back 🐾</h2>
-    <p>Login to your Pawfect Match account</p>
-    <form>
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="you@example.com" required />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="••••••••" required />
+    <a href="../home-page/home.html" style="text-decoration:none; color:inherit;">
+      <h2>Welcome Back 🐾</h2>
+    </a>
+
+    <p>Login to your Pawfect Match account</p>
+
+    <form id="loginForm">
+      <label for="naam">Username</label>
+      <input type="text" id="naam" name="naam" placeholder="Your username" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="wachtwoord">Password</label>
+      <input type="password" id="wachtwoord" name="wachtwoord" placeholder="••••••••" required />
 
       <button type="submit">Login</button>
     </form>
+
     <p class="footer-text">
       Don't have an account? <a href="../signup-page/signup.html">Sign up</a>
     </p>
+
   </div>
+
+  <script src="session.js"></script>
+
 </div>
 </body>
 </html>

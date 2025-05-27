@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $uploadFile = $uploadDir . $fotoName;
 
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadFile)) {
-            $foto = $fotoName; // Save the file name to the database
+            $foto = $fotoName;
         } else {
             die("Failed to upload image.");
         }

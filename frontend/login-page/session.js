@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // Store username in localStorage
                         localStorage.setItem('username', data.naam);
+                        localStorage.setItem('profiel_foto', data.profiel_foto || '');
                         window.location.href = '../home-page/home.html';
                     } else {
                         alert(data.message || 'Login failed');

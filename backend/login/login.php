@@ -15,7 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $conn = dbconnection();
 
-    $query = "SELECT * FROM gebruiker WHERE email = :email";
+    // Join gebruiker and profiel to get the photo
+    $query = "SELECT g.*, p.foto AS profiel_foto 
+              FROM gebruiker g 
+              LEFT JOIN profiel p ON g.profiel = p.id 
+              WHERE g.email = :email";
     $stmt = $conn->prepare($query);
 
     try {
@@ -38,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'success' => true,
             'role' => 'user',
             'naam' => $user["naam"],
+            'profiel_foto' => $user["profiel_foto"] ?? null,
             'redirect' => '../../frontend/home-page/home.html'
         ]);
         exit();

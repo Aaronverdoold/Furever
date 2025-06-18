@@ -78,10 +78,11 @@
     <h3>Swipe & Match</h3>
     <div id="card-stack" class="card-stack"></div>
     <div class="swipe-buttons">
-      <button id="dislike-btn">👎 Dislike</button>
-      <button id="like-btn">👍 Like</button>
+      <button class="swipe-btn" data-richting="left">Swipe Left</button>
+      <button class="swipe-btn" data-richting="right">Swipe Right</button>
     </div>
     <div id="match-message" class="match-message"></div>
+    <div id="swipe-message"></div>
   </div>
 </section>
 
@@ -90,11 +91,21 @@
   <div class="container">
     <h3>Trending Pets</h3>
     <div class="wrapper drag-gallery">
-      <div class="slider">1</div>
-      <div class="slider">2</div>
-      <div class="slider">3</div>
-      <div class="slider">4</div>
-      <div class="slider">5</div>
+      <div class="slider">
+        <img src="../../images/dog.jpg" alt="Dog" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <div class="slider">
+        <img src="../../images/cat.jpg" alt="Cat" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <div class="slider">
+        <img src="../../images/cat3.jpg" alt="Dog and Cat" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <div class="slider">
+        <img src="../../images/whiteDog.jpg" alt="Dog" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <div class="slider">
+        <img src="../../images/cat2.jpg" alt="Rabbit" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
     </div>
   </div>
 </section>
@@ -120,7 +131,7 @@
 <section id="get-started" class="get-started">
   <div class="container">
     <h3>Ready to Get Started?</h3>
-    <a href="#" class="cta-button">Create a Pet Profile</a>
+    <a href="../signup-page/signup.html" class="cta-button">Create a Pet Profile</a>
   </div>
 </section>
 
@@ -132,7 +143,6 @@
   </div>
 </footer>
 
-<!-- ✅ Scripts -->
 <script>
   const petProfiles = [
     { id: 1, name: "Buddy", image: "../../images/dog.jpg" },

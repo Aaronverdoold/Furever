@@ -7,16 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoutBtn = document.getElementById('logout-btn');
 
     if (username) {
-        // Show user profile section
         if (loginBtn) loginBtn.style.display = 'none';
         if (userProfile) userProfile.style.display = 'inline-flex';
-
-        // Determine profile photo URL
         const profilePhotoUrl = profielFoto && profielFoto !== 'null' && profielFoto !== ''
             ? '../../uploads/' + profielFoto
             : '../../images/default.jpg';
-
-        // Show profile photo and username
         if (userNav) {
             userNav.innerHTML = `
                 <img src="${profilePhotoUrl}"
@@ -36,15 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     } else {
-        // Show login button, hide user profile
         if (loginBtn) loginBtn.style.display = 'inline-block';
         if (userProfile) userProfile.style.display = 'none';
         if (userNav) {
             userNav.innerHTML = `<a href="./../login-page/login.html">Login</a>`;
         }
     }
-
-    // Logout logic for separate logout button (if present)
     if (logoutBtn) {
         logoutBtn.onclick = function () {
             localStorage.removeItem('username');
@@ -52,4 +44,62 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = '../home-page/home.html';
         };
     }
+
+    const petProfiles = [
+        { id: 1, name: "Buddy", image: "../../images/dog.jpg" },
+        { id: 2, name: "Mittens", image: "../../images/cat.jpg" },
+        { id: 3, name: "Luna", image: "../../images/dog-cat.jpg" }
+    ];
+    let currentIndex = 0;
+
+    function showCard() {
+        const cardStack = document.getElementById("card-stack");
+        cardStack.innerHTML = "";
+        const pet = petProfiles[currentIndex];
+        if (!pet) {
+            cardStack.innerHTML = "<p>No more pets to swipe!</p>";
+            return;
+        }
+        const card = document.createElement("div");
+        card.className = "pet-card";
+        card.innerHTML = `
+            <img src="${pet.image}" alt="${pet.name}" />
+            <h4>${pet.name}</h4>
+        `;
+        cardStack.appendChild(card);
+    }
+
+    function handleSwipe(type) {
+        currentIndex++;
+        showCard();
+    }
+
+    document.querySelectorAll('.swipe-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const pet = petProfiles[currentIndex];
+            if (!pet) return;
+            const dierId = pet.id;
+            const richting = this.dataset.richting;
+            const gebruikerId = localStorage.getItem('gebruiker_id');
+            fetch('../../backend/swipen/swipe.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    gebruiker_id: gebruikerId,
+                    dier_id: dierId,
+                    richting: richting
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('swipe-message').textContent = data.success
+                        ? 'Swipe saved!'
+                        : 'Error: ' + data.error;
+                });
+
+            handleSwipe(richting === 'right' ? 'like' : 'dislike');
+        });
+    });
+
+    showCard();
 });

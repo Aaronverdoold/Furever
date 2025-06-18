@@ -8,12 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="signup-wrapper">
+<div class="wrapper">
   <div class="signup-card">
     <h2>Create Account 🐶</h2>
     <p>Join the Pawfect Match community</p>
 
-    <form action="../../backend/signup/signup.php" method="POST" enctype="multipart/form-data">
+    <form id="signup-form" action="../../backend/signup/signup.php" method="POST" enctype="multipart/form-data">
       <label for="naam">Naam</label>
       <input type="text" id="naam" name="naam" required />
 
@@ -35,9 +35,26 @@
       <button type="submit">Sign Up</button>
     </form>
 
+    <hr style="margin: 2em 0;">
+
+    <!-- Add Pet Form -->
+    <form id="add-dier-form" action="../../backend/swipen/add_dier.php">
+      <input type="text" name="dier_naam" placeholder="Name" required>
+      <input type="text" name="soort" placeholder="Species" required>
+      <input type="text" name="ras" placeholder="Breed" required>
+      <input type="number" name="leeftijd" placeholder="Age" required>
+      <input type="number" name="asiel_id" placeholder="Shelter ID" required>
+      <textarea name="beschrijving" placeholder="Description"></textarea>
+      <button type="submit">Add Pet</button>
+    </form>
+    <div id="add-dier-message"></div>
+
     <p class="footer-text">Already have an account? <a href="../login-page/login.html">Login</a></p>
 
   </div>
+
+  <script src="signup.js"></script>
+
 </div>
 </body>
 </html>
